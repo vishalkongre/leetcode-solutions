@@ -1,9 +1,10 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if i != j and nums[j] == target-nums[i]:
-                    return [i,j]
-
-
+        seen = {}
+        for index, num in enumerate(nums):
+            needed = target - num
+            if needed in seen:
+                return [seen[needed], index]
+            else:
+                seen[num]= index
         
